@@ -96,6 +96,8 @@ declare -a sites=(
 "https://epp.genproc.gov.ru"
 "https://edu.gov.ru"
 "http://www.sobyanin.ru"
+"https://garant.ru"
+"https://gossluzhba.gov.ru"
 "https://www.miranda-media.ru/"
 "https://simferopol.miranda-media.ru/"
 "https://sevastopol.miranda-media.ru/"
@@ -109,8 +111,6 @@ declare -a sites=(
 "https://foros.miranda-media.ru/"
 "https://chernomorskoe.miranda-media.ru/"
 "https://kirovskoe.miranda-media.ru/"
-"https://garant.ru"
-"https://gossluzhba.gov.ru"
 )
 
 while :

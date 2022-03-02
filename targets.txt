@@ -89,6 +89,9 @@ https://chechnya.gov.ru
 https://epp.genproc.gov.ru
 https://edu.gov.ru
 http://www.sobyanin.ru
+https://garant.ru
+https://gossluzhba.gov.ru
+
 https://www.miranda-media.ru/
 https://simferopol.miranda-media.ru/
 https://sevastopol.miranda-media.ru/
