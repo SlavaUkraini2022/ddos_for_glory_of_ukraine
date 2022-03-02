@@ -13,6 +13,8 @@
 - https://stats.frontend.im
 - https://ddosmonitor.herokuapp.com
 
+Я не bash-скриптер, тому взяв за заготівку зразок скрипта, який був поширений в одній з груп. ТОМУ пропозиції по оптимізації приймаються - треба зробити все найбільш оптимізованим і автоматизованим!
+
 Слава Україні!
 
 ## EN
@@ -29,6 +31,8 @@ Both HTML and Bash files require you to have VPN running, OR for HTML files you 
 - https://incourse.trade/sites.php
 - https://stats.frontend.im
 - https://ddosmonitor.herokuapp.com
+
+I aint bash-scripter, files provided here are created based on another script I found in one of telegram channels. Therefore propositions, beautifications are absolutely welcome and NEEDED - it's gotta be more autonomous and optimized!
 
 Gloty to Ukraine!
 
